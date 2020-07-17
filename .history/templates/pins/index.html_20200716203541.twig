@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Find all the best pins on Earth !' %}
+
+{% block body %}
+    <h1>All pins</h1>
+
+    {% for pin in pins %}
+        <h1>{{pin.title}}</h1><br/>
+        <p>{{pin.description}}</p>
+
+    {% endfor %}
+
+
+{% endblock %}
