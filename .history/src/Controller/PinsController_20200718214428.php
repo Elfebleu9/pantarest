@@ -60,7 +60,7 @@ class PinsController extends AbstractController
     }
 
     /**
-    * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit",methods={"GET","POST"})
+    * @Route("/pins/{id<[0-9]+>/edit}", name="app_pins_edit",methods={"GET","POST"})
     */
     public function edit(Pin $pin, Request $request, EntityManagerInterface $em) :Response
     {
@@ -75,7 +75,7 @@ class PinsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
     
-            $em->flush();
+            $em->flush($pin);
     
             return $this->redirectToRoute('app_home');
         }

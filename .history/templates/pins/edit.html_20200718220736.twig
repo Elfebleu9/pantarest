@@ -1,0 +1,13 @@
+ 
+{% block title 'Edit Pin n° xcv'~ pin.id %}
+
+{% block body %}
+    <h1>Edit Pin n° {{pin.id}} </h1>
+
+    {{form_start(form)}}
+
+        {{form_widget(form)}}
+        <input type="submit" value="Update Pin" formnovalidate>
+    {{form_end(form)}}
+
+{% endblock %}

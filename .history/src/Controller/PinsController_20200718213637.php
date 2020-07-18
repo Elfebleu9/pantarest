@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Pin;
 use App\Repository\PinRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,7 +61,7 @@ class PinsController extends AbstractController
     }
 
     /**
-    * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit",methods={"GET","POST"})
+    * @Route("/pins/{id<[0-9]+>/edit}", name="app_pins_edit",methods={"GET","POST"})
     */
     public function edit(Pin $pin, Request $request, EntityManagerInterface $em) :Response
     {
