@@ -15,7 +15,7 @@ class PinsController extends AbstractController
      */
     public function index(PinRepository $pinRepository) :Response
     {
-       
+        dd(date_default_timezone_get());
         $pins=$pinRepository->FindBy([], ['createdAt'=> 'DESC']);
         
         return $this->render('pins/index.html.twig',compact('pins'));
