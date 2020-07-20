@@ -19,7 +19,7 @@ class PinsController extends AbstractController
     public function index(PinRepository $pinRepository): Response
     {
 
-        $pins = $pinRepository->FindBy([], ['createdAt' => 'DESC']);
+        $pins = $pinRepository->FindBy([], ['createdAt' => 'DESC'], 5);
 
         return $this->render('pins/index.html.twig', compact('pins'));
     }
@@ -81,7 +81,7 @@ class PinsController extends AbstractController
     public function delete(Request $request, Pin $pin, EntityManagerInterface $em) :Response
     {
         
-        if($this->isCsrfTokenValid('pin_deletion_'.$pin->getId(), $request->request->get('csrf_token') ))
+        if($this->isCsrfTokenIsValid('pin_deletion_'.$pin->getId(), $request->request->get('csrf_token') ))
         {
             $em->remove($pin);
             $em->flush();
