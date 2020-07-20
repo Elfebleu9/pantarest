@@ -9,8 +9,6 @@
         <p>{{pin.description}}</p>
 
     </article>
-
-    
     <a href="{{ path('app_pins_edit', {id: pin.id}) }}">Edit</a> |
     <form action="{{ path('app_pins_delete', {id: pin.id}) }}" method="post">
         <input type="hidden" name="_method" value="DELETE">
