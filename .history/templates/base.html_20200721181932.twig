@@ -6,6 +6,12 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <nav>
             <ul>
                 <li><a href="{{path('app_home')}}">Accueil</a></li>
