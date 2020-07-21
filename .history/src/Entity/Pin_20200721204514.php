@@ -23,21 +23,18 @@ class Pin
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Length(min=3,minMessage="minimum 3 caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
-     * @Assert\Length(min=10,minMessage="minimum 10 caractères")
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime",options={"default":"CURRENT_TIMESTAMP"})
-     * 
+     * @Assert\NotBlank
      */
     private $createdAt;
 

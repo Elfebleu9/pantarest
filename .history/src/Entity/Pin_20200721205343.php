@@ -24,14 +24,14 @@ class Pin
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
-     * @Assert\Length(min=3,minMessage="minimum 3 caractères")
+     * @Assert\Length(min=3)
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
-     * @Assert\Length(min=10,minMessage="minimum 10 caractères")
+     * @Assert\Length(min=10)
      */
     private $description;
 
