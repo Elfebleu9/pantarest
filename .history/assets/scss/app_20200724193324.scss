@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@import 'shared/variables';
+
+
+
+body {
+    background: lightgray;
+    font-family: $secondary-font, sans-serif;   
+}
+.alert{
+    padding:10px;
+    color:black;
+    text-align:center;
+    margin:0;
+    border:none;
+    border-radius:0;
+
+    &.alert-success{
+        background-color:lightgreen;
+    }
+    &.alert-info{
+        background-color:blue;
+    }
+    &.alert-danger{
+        background-color:orange;
+    }
+    &.alert-error{
+        background-color:red;
+    }
+}
+

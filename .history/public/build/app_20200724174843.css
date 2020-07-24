@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+body {
+  background: yellow;
+  font-family: "Montserrat", sans-serif;
+}
+
+.alert {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.alert.alert-success {
+  background-color: lightgreen;
+}
+
+.alert.alert-info {
+  background-color: blue;
+}
+
+.alert.alert-danger {
+  background-color: orange;
+}
+
+.alert.alert-error {
+  background-color: red;
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFNQTtFQUNJLGtCQUFrQjtFQUNsQixxQ0FBc0M7QUFIMUM7O0FBS0E7RUFDSSxhQUFZO0VBQ1osWUFBVztFQUNYLGtCQUFpQjtFQUNqQixTQUFRO0VBQ1IsWUFBVztFQUNYLGdCQUFlO0FBRm5COztBQUpBO0VBU1EsdUJBQXNCO0FBRDlCOztBQVJBO0VBWVEsc0JBQXFCO0FBQTdCOztBQVpBO0VBZVEsd0JBQXVCO0FBQy9COztBQWhCQTtFQWtCUSxxQkFBb0I7QUFFNUIiLCJmaWxlIjoiYXBwLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKCdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PU1vbnRzZXJyYXQmZGlzcGxheT1zd2FwJyk7XG5AaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1PcGVuK1NhbnMmZGlzcGxheT1zd2FwJyk7XG5cbiRwcmltYXJ5LWZvbnQgOiAnTW9udHNlcnJhdCc7XG4kc2Vjb25kYXJ5LWZvbnQgOiAnVmVyZGFuYSc7XG5cbmJvZHkge1xuICAgIGJhY2tncm91bmQ6IHllbGxvdztcbiAgICBmb250LWZhbWlseTogJHByaW1hcnktZm9udCwgc2Fucy1zZXJpZjsgICBcbn1cbi5hbGVydHtcbiAgICBwYWRkaW5nOjEwcHg7XG4gICAgY29sb3I6d2hpdGU7XG4gICAgdGV4dC1hbGlnbjpjZW50ZXI7XG4gICAgbWFyZ2luOjA7XG4gICAgYm9yZGVyOm5vbmU7XG4gICAgYm9yZGVyLXJhZGl1czowO1xuXG4gICAgJi5hbGVydC1zdWNjZXNze1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOmdyZWVuO1xuICAgIH1cbiAgICAmLmFsZXJ0LWluZm97XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6Ymx1ZTtcbiAgICB9XG4gICAgJi5hbGVydC1kYW5nZXJ7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6b3JhbmdlO1xuICAgIH1cbiAgICAmLmFsZXJ0LWVycm9ye1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOnJlZDtcbiAgICB9XG59XG5cbiJdLCJzb3VyY2VSb290IjoiIn0=*/

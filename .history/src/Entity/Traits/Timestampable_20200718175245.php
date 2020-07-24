@@ -1,4 +1,4 @@
 <?php
 
-namespace App\Entity\Traits
+namespace App\Entity\Traits;
 
