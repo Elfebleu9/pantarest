@@ -12,7 +12,6 @@ import '../scss/app.scss';
 import $ from 'jquery';
 import 'bootstrap';
 
-$('.custom-file-input').on('change', function(e){
-    let inputFile = e.currentTarget;
-    $(inputFile).parent().find('.custom-file-label').html(inputFile.files[0].name);
+$('.custom-file-input').on('change', function(){
+    alert('changement');
 });
