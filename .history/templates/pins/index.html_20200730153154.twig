@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title 'Find all the best pins on Earth !' %}
+
+{% block body %}
+    {% if false %}
+        <h1>{{pluralize(pins|length,'Pin')}} </h1>
+
+        {% for pin in pins %}
+            <article>
+                <h2><a href="{{path('app_pins_show', {id:pin.id})}}">{{pin.title}}</a></h2><br/>
+                <p>{{pin.description | u.truncate(10,'...',false)}}</p>
+                <p>Soumis  {{pin.createdAt |ago}}</p>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p class="h1 text-center">Pas de pin actuellement ! <a href="{{path('app_pins_create')}}">Soyez le premier à en créer un !</a></p>
+    {% endif %}
+
+
+{% endblock %}
