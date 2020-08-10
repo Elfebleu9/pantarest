@@ -50,15 +50,14 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Pin::class, mappedBy="user", orphanRemoval=true)
-     */
-    private $pins;
+    
 
     public function __construct()
     {
         $this->pins = new ArrayCollection();
     }
+
+    
 
     public function getId(): ?int
     {
@@ -192,5 +191,6 @@ class User implements UserInterface
 
         return $this;
     }
+
 
 }
