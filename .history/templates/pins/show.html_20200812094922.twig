@@ -17,7 +17,7 @@
                             Soumis <time datetime="{{ pin.createdAt|date('d-m-Y H:i:s')}}">{{ pin.createdAt|ago }} par {{pin.user.fullName}}</time>
                         </small>
                     </p>
-                    <p class="pt-3 text-break">{{ pin.description }}</p>
+                    <p class="text-break">{{ pin.description }}</p>
                     <div class="pt-3">               
                         <a href="{{ path('app_pins_edit', {id: pin.id}) }}" class="btn btn-light">Edit</a> 
                         <a href="#" onclick="event.preventDefault();confirm('Êtes-vous bien sûr(e) ?') && document.getElementById('js-pin-delete-form').submit();" class="btn btn-light">Delete</a> 
