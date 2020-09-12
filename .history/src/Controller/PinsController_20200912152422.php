@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Pin;
 use App\Form\PinType;
 use App\Repository\PinRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class PinsController extends AbstractController
     public function index(PinRepository $pinRepository): Response
     {
 
-        $pins = $pinRepository->FindBy([], ['createdAt' => 'DESC'], 5);
+        $pins = $pinRepository->FindBy([], ['createdAt' => 'DESC']);
 
         return $this->render('pins/index.html.twig', compact('pins'));
     }
@@ -27,8 +28,9 @@ class PinsController extends AbstractController
     /**
      * @Route("/pins/create", name="app_pins_create", methods={"GET","POST"})
      */
-    public function create(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepo): Response
     {
+       
         $pin = new Pin;
 
         $form = $this->createForm(PinType::class, $pin);
@@ -37,8 +39,11 @@ class PinsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $pin->setUser($this ->getUser());
             $em->persist($pin);
             $em->flush();
+
+            $this->addFlash('success', 'Le pin est créé');
 
             return $this->redirectToRoute('app_home');
         }
@@ -56,7 +61,7 @@ class PinsController extends AbstractController
     }
 
     /**
-    * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit",methods={"GET","POST"})
+    * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit",methods={"GET","PUT"})
     */
     public function edit(Pin $pin, Request $request, EntityManagerInterface $em) :Response
     {
@@ -68,6 +73,8 @@ class PinsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
     
             $em->flush();
+
+            $this->addFlash('info', 'Le pin est modifié');
     
             return $this->redirectToRoute('app_home');
         }
@@ -76,13 +83,18 @@ class PinsController extends AbstractController
     }
 
     /**
-    * @Route("/pins/{id<[0-9]+>}/delete", name="app_pins_delete",methods={"GET"})
+    * @Route("/pins/{id<[0-9]+>}", name="app_pins_delete",methods={"DELETE"})
     */
-    public function delete(Pin $pin, EntityManagerInterface $em) :Response
+    public function delete(Request $request, Pin $pin, EntityManagerInterface $em) :Response
     {
-        $em->remove($pin);
-        $em->flush();
+        
+        if($this->isCsrfTokenValid('pin_deletion_'.$pin->getId(), $request->request->get('csrf_token') ))
+        {
+            $em->remove($pin);
+            $em->flush();
 
+            $this->addFlash('danger', 'Le pin est supprimé');
+        }
         return $this->redirectToRoute('app_home');
     }
 }
