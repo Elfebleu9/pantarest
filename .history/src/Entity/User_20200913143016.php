@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use App\Entity\Traits\Timestampable;
@@ -32,6 +34,8 @@ class User implements UserInterface
      */
     private $lastName;
 
+    
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -48,7 +52,20 @@ class User implements UserInterface
      */
     private $password;
 
-    
+    /**
+     * @ORM\OneToMany(targetEntity=Pin::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $pins;
+
+    public function __construct()
+    {
+        $this->pins = new ArrayCollection();
+    }
+
+    public function fullName()
+    {
+        return $this->getFirstName() .' '. $this->getLastName();
+    }
 
     public function getId(): ?int
     {
@@ -78,6 +95,13 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getFullName(): ?string
+    {
+        return $this->fullName;
+    }
+
+   
 
     public function getEmail(): ?string
     {
@@ -152,5 +176,40 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return Collection|Pin[]
+     */
+    public function getPins(): Collection
+    {
+        return $this->pins;
+    }
+
+    public function addPin(Pin $pin): self
+    {
+        if (!$this->pins->contains($pin)) {
+            $this->pins[] = $pin;
+            $pin->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePin(Pin $pin): self
+    {
+        if ($this->pins->contains($pin)) {
+            $this->pins->removeElement($pin);
+            // set the owning side to null (unless already changed)
+            if ($pin->getUser() === $this) {
+                $pin->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->getFirstName() . '  ' . $this->getLastName();
+    }
 
 }

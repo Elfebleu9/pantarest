@@ -35,6 +35,13 @@ class User implements UserInterface
     private $lastName;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fullName;
+
+    
+
+    /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
@@ -58,6 +65,11 @@ class User implements UserInterface
     public function __construct()
     {
         $this->pins = new ArrayCollection();
+    }
+
+    public function fullName()
+    {
+        return $this->getFirstName() .' '. $this->getLastName();
     }
 
     public function getId(): ?int
@@ -88,6 +100,13 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getFullName(): ?string
+    {
+        return $this->fullName;
+    }
+
+   
 
     public function getEmail(): ?string
     {
@@ -195,7 +214,7 @@ class User implements UserInterface
 
     public function getFullName(): string
     {
-        return $this->getFirstName() . '  ' . getLastName();
+        return $this->getFirstName() . '  ' . $this->getLastName();
     }
 
 }
